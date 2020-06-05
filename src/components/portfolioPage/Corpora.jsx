@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCreator from './ItemCreator.jsx';
 import GeographicMap from './GeographicMap.jsx';
+import LazyLoad from 'react-lazyload';
 
 class Corpora extends Component {
 
@@ -43,7 +44,9 @@ function Item(props) {
   if (thumbnail) return (
     <div className="Item">
       <Link to={uri}>
-        <img src={thumbnail} alt={name}/>
+        <LazyLoad height={200} once offset={100}>
+          <img src={thumbnail} alt={name}/>
+        </LazyLoad>
       </Link>
       <div className="text-center">{name}</div>
     </div>
